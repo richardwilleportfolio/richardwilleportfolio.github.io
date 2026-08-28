@@ -744,8 +744,13 @@
       : `<span>PROJECT IMAGE</span>`;
     topImageBox.style.aspectRatio = p.topImageAspect || "";
     topImageBox.style.background = p.topImageBg || "";
-    document.getElementById("modal-top-image-caption").textContent =
-      p.imageCaption || "Add a caption here";
+    const topImageCaption = document.getElementById("modal-top-image-caption");
+    if(p.imageCaption){
+      topImageCaption.textContent = p.imageCaption;
+      topImageCaption.style.display = "block";
+    } else {
+      topImageCaption.style.display = "none";
+    }
     document.getElementById("modal-title").textContent = p.title;
     document.getElementById("modal-role").textContent = p.role;
     document.getElementById("modal-tags").innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
